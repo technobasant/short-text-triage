@@ -75,7 +75,7 @@ Each step is also a module (`uv run python -m triage.<step>`), and later steps r
 ## Limits
 
 - **Synthetic corpus.** Hand-written phrasings and mechanical damage are cleaner than real inboxes; what transfers is the mechanism (normalization collapses variants, the cosine band is narrow, a margin beats a threshold), not the exact percentages.
-- **One model, one machine.** multilingual-e5-small on CPU on one laptop, under load. Larger or domain-tuned embedders will move the band.
+- **One model, one machine.** multilingual-e5-small on CPU on one shared machine (Apple M5), under load. Larger or domain-tuned embedders will move the band.
 - **Small n where it matters.** The threshold story turns on one heavy key; the lab reports that rather than averaging it away.
 - **Built from scratch.** The question comes from [the consulting engagement](https://basantbhattarai.com.np/work/consulting-short-text-and-alerting/) this lab rebuilds the idea of; no data, code or domain from it is used here.
 
