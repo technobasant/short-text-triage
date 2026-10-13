@@ -1,0 +1,188 @@
+{
+  "day1": {
+    "per_row": 20000,
+    "per_distinct_raw": 3018,
+    "per_distinct_l4": 1537,
+    "per_cluster_plus_taxonomy": 125
+  },
+  "day2": {
+    "per_row": 20000,
+    "per_cache_miss_l4_key": 1243,
+    "discovery_pool_keys": 515,
+    "discovery_clusters": 44,
+    "per_discovery_cluster": 44
+  },
+  "discovery": {
+    "policy": {
+      "floor": 0.8,
+      "m": 0.03
+    },
+    "clusters": {
+      "0": {
+        "spam_messages": 200,
+        "login_failure": 1
+      },
+      "1": {
+        "account_takeover": 91
+      },
+      "2": {
+        "change_address": 240,
+        "spam_messages": 15
+      },
+      "3": {
+        "cancel_subscription": 79,
+        "spam_messages": 23
+      },
+      "4": {
+        "change_address": 32
+      },
+      "5": {
+        "change_address": 37
+      },
+      "6": {
+        "refund_missing": 10,
+        "noise": 1
+      },
+      "7": {
+        "app_crash": 56
+      },
+      "8": {
+        "change_address": 10
+      },
+      "9": {
+        "login_failure": 22
+      },
+      "10": {
+        "refund_missing": 58,
+        "late_delivery": 42
+      },
+      "11": {
+        "refund_missing": 7
+      },
+      "12": {
+        "login_failure": 21
+      },
+      "13": {
+        "login_failure": 54
+      },
+      "14": {
+        "login_failure": 97
+      },
+      "15": {
+        "change_address": 184,
+        "app_crash": 18,
+        "spam_messages": 1,
+        "account_takeover": 1
+      },
+      "16": {
+        "change_address": 349
+      },
+      "17": {
+        "change_address": 6
+      },
+      "18": {
+        "refund_missing": 84
+      },
+      "19": {
+        "late_delivery": 103
+      },
+      "20": {
+        "refund_missing": 387
+      },
+      "21": {
+        "refund_missing": 7
+      },
+      "22": {
+        "change_address": 116
+      },
+      "23": {
+        "refund_missing": 21,
+        "double_charge": 18
+      },
+      "24": {
+        "refund_missing": 13,
+        "double_charge": 9
+      },
+      "25": {
+        "refund_missing": 42
+      },
+      "26": {
+        "double_charge": 29
+      },
+      "27": {
+        "late_delivery": 106,
+        "app_crash": 3,
+        "refund_missing": 1
+      },
+      "28": {
+        "login_failure": 176
+      },
+      "29": {
+        "login_failure": 9
+      },
+      "30": {
+        "change_address": 48
+      },
+      "31": {
+        "late_delivery": 154
+      },
+      "32": {
+        "late_delivery": 11
+      },
+      "33": {
+        "late_delivery": 8
+      },
+      "34": {
+        "late_delivery": 6
+      },
+      "35": {
+        "login_failure": 859
+      },
+      "36": {
+        "login_failure": 11
+      },
+      "37": {
+        "change_address": 21
+      },
+      "38": {
+        "change_address": 44
+      },
+      "39": {
+        "change_address": 45
+      },
+      "40": {
+        "late_delivery": 245
+      },
+      "41": {
+        "late_delivery": 9
+      },
+      "42": {
+        "change_address": 103,
+        "noise": 3
+      },
+      "43": {
+        "change_address": 63
+      }
+    },
+    "novel_majority_clusters": [
+      2,
+      4,
+      5,
+      8,
+      15,
+      16,
+      17,
+      22,
+      30,
+      37,
+      38,
+      39,
+      42,
+      43
+    ],
+    "novel_rows_in_pool": 1315,
+    "novel_rows_in_novel_majority_clusters": 1298,
+    "novel_majority_cluster_purity_rows": 0.9716,
+    "pool_noise_share_keys": 0.0738
+  }
+}

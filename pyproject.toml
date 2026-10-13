@@ -1,0 +1,22 @@
+[project]
+name = "short-text-triage"
+version = "0.1.0"
+description = "Lab: classify distinct normalized strings, not rows. Synthetic corpus, local multilingual-e5-small, UMAP + HDBSCAN, margin-banded assignment."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "sentence-transformers>=3.0",
+  "torch>=2.4",
+  "umap-learn>=0.5.7",
+  "scikit-learn>=1.5",
+  "numpy>=1.26",
+  "pandas>=2.2",
+]
+
+[tool.uv]
+package = false
+
+[tool.ruff.lint]
+# Pinned so CI and local runs agree across Ruff versions: pyflakes (undefined
+# names, unused imports, …) and syntax errors. Style rules are deliberately off:
+# this is the code that produced MEASUREMENTS.md, and it stays as it ran.
+select = ["E9", "F"]

@@ -1,0 +1,813 @@
+== corpus  10:52:40  load: { 51.26 50.80 51.82 }
+day1: 20000 rows
+day2: 20000 rows
+== dedupe  10:52:48  load: { 49.71 50.49 51.70 }
+{
+  "rows_day1": 20000,
+  "rows_day2": 20000,
+  "levels": [
+    {
+      "level": "L0 raw",
+      "distinct_day1": 3018,
+      "rows_per_distinct_day1": 6.63,
+      "day2_row_cache_hit_rate": 0.6776,
+      "day2_distinct": 3768,
+      "day2_distinct_misses": 2236
+    },
+    {
+      "level": "L1 whitespace",
+      "distinct_day1": 2624,
+      "rows_per_distinct_day1": 7.62,
+      "day2_row_cache_hit_rate": 0.6845,
+      "day2_distinct": 3256,
+      "day2_distinct_misses": 1956
+    },
+    {
+      "level": "L2 +NFKC",
+      "distinct_day1": 2569,
+      "rows_per_distinct_day1": 7.79,
+      "day2_row_cache_hit_rate": 0.6849,
+      "day2_distinct": 3162,
+      "day2_distinct_misses": 1909
+    },
+    {
+      "level": "L3 +casefold",
+      "distinct_day1": 2182,
+      "rows_per_distinct_day1": 9.17,
+      "day2_row_cache_hit_rate": 0.6896,
+      "day2_distinct": 2621,
+      "day2_distinct_misses": 1652
+    },
+    {
+      "level": "L4 +edge punctuation",
+      "distinct_day1": 1537,
+      "rows_per_distinct_day1": 13.01,
+      "day2_row_cache_hit_rate": 0.7007,
+      "day2_distinct": 1817,
+      "day2_distinct_misses": 1219
+    }
+  ],
+  "nfd_shift_scenario": {
+    "day2_nfd_known_rows": 613,
+    "raw_key_misses": 613,
+    "l4_key_misses": 0
+  },
+  "nfd": {
+    "day2_nfd_rows": 613,
+    "raw_key_misses": 8,
+    "l4_key_misses": 0,
+    "example_nfc_vs_nfd_equal_as_bytes": false
+  },
+  "day1_l4_distinct_by_first_variant": {
+    "typo": 1364,
+    "exact": 98,
+    "punct": 28,
+    "case": 26,
+    "space": 17,
+    "nfd": 4
+  },
+  "day1_variant_mix": {
+    "typo": 2426,
+    "exact": 9633,
+    "punct": 2384,
+    "case": 3039,
+    "space": 1640,
+    "nfd": 878
+  },
+  "day1_lang_mix": {
+    "pt": 5853,
+    "de": 3346,
+    "fr": 5784,
+    "en": 2402,
+    "es": 2009,
+    "xx": 606
+  },
+  "day2_source_mix": {
+    "held": 3937,
+    "known": 14086,
+    "noise": 614,
+    "novel": 1363
+  }
+}
+== bench_embed  10:52:53  load: { 46.85 49.89 51.48 }
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6619.66it/s]
+{
+  "machine": {
+    "chip": "Apple M5",
+    "cpus": 10,
+    "torch_threads": 4,
+    "python": "3.12.14",
+    "torch": "2.14.0",
+    "sentence_transformers": "6.1.0",
+    "scikit_learn": "1.9.1",
+    "umap_learn": "0.5.12",
+    "numpy": "2.5.3",
+    "model": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "load_avg_1_5_15": [
+      43.5,
+      47.6,
+      50.0
+    ]
+  },
+  "runs": 3,
+  "results": [
+    {
+      "input": "day-1 distinct L4 keys",
+      "n": 1537,
+      "batch_size": 64,
+      "median_wall_s": 28.53,
+      "wall_runs_s": [
+        40.96,
+        28.53,
+        28.32
+      ],
+      "median_cpu_s": 6.74,
+      "cpu_runs_s": [
+        8.45,
+        6.74,
+        6.74
+      ],
+      "texts_per_wall_s": 54,
+      "cpu_ms_per_1k_texts": 4384
+    },
+    {
+      "input": "day-1 rows",
+      "n": 20000,
+      "batch_size": 64,
+      "median_wall_s": 387.18,
+      "wall_runs_s": [
+        346.09,
+        387.18,
+        431.29
+      ],
+      "median_cpu_s": 93.31,
+      "cpu_runs_s": [
+        89.79,
+        93.31,
+        95.09
+      ],
+      "texts_per_wall_s": 52,
+      "cpu_ms_per_1k_texts": 4666
+    }
+  ],
+  "load_avg_end": [
+    36.9,
+    44.8,
+    46.9
+  ]
+}
+== cluster  11:19:21  load: { 34.29 43.07 46.15 }
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3310.76it/s]
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+.venv/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+{
+  "hdbscan": {
+    "min_cluster_size": 5,
+    "min_samples": 3
+  },
+  "umap": {
+    "n_neighbors": 15,
+    "n_components": 10,
+    "min_dist": 0.0,
+    "metric": "cosine",
+    "random_state": 42
+  },
+  "load_avg_start": [
+    40.80322265625,
+    43.01904296875,
+    45.77734375
+  ],
+  "runs": 3,
+  "results": [
+    {
+      "method": "(a) HDBSCAN, 384-d, distinct keys",
+      "points": 1537,
+      "median_wall_s": 4.09,
+      "wall_runs_s": [
+        4.09,
+        2.61,
+        6.22
+      ],
+      "median_cpu_s": 1.22,
+      "cpu_runs_s": [
+        1.17,
+        1.22,
+        1.28
+      ],
+      "clusters": 97,
+      "noise_row_share": 0.0487,
+      "purity_rows": 0.9956,
+      "ari_clustered_rows": 0.5737,
+      "ari_all_rows_noise_as_one_bucket": 0.537,
+      "multilingual_cluster_share": 0.1959,
+      "clusters_per_intent": {
+        "account_takeover": 12,
+        "app_crash": 12,
+        "cancel_subscription": 11,
+        "double_charge": 15,
+        "late_delivery": 13,
+        "login_failure": 14,
+        "noise": 1,
+        "refund_missing": 9,
+        "spam_messages": 10
+      }
+    },
+    {
+      "method": "(b) UMAP->HDBSCAN, distinct keys",
+      "points": 1537,
+      "median_wall_s": 11.72,
+      "wall_runs_s": [
+        44.82,
+        9.38,
+        11.72
+      ],
+      "median_cpu_s": 3.3,
+      "cpu_runs_s": [
+        15.66,
+        3.26,
+        3.3
+      ],
+      "clusters": 124,
+      "noise_row_share": 0.0212,
+      "purity_rows": 0.9945,
+      "ari_clustered_rows": 0.4871,
+      "ari_all_rows_noise_as_one_bucket": 0.4784,
+      "multilingual_cluster_share": 0.2581,
+      "clusters_per_intent": {
+        "account_takeover": 17,
+        "app_crash": 18,
+        "cancel_subscription": 14,
+        "double_charge": 19,
+        "late_delivery": 13,
+        "login_failure": 21,
+        "noise": 1,
+        "refund_missing": 9,
+        "spam_messages": 12
+      }
+    },
+    {
+      "method": "(c) UMAP->HDBSCAN, every row",
+      "points": 20000,
+      "median_wall_s": 113.1,
+      "wall_runs_s": [
+        127.43,
+        83.61,
+        113.1
+      ],
+      "median_cpu_s": 35.44,
+      "cpu_runs_s": [
+        46.73,
+        33.88,
+        35.44
+      ],
+      "clusters": 1254,
+      "noise_row_share": 0.1191,
+      "purity_rows": 0.9998,
+      "ari_clustered_rows": 0.0113,
+      "ari_all_rows_noise_as_one_bucket": 0.0071,
+      "multilingual_cluster_share": 0.0104,
+      "clusters_per_intent": {
+        "account_takeover": 136,
+        "app_crash": 87,
+        "cancel_subscription": 80,
+        "double_charge": 354,
+        "late_delivery": 84,
+        "login_failure": 219,
+        "noise": 29,
+        "refund_missing": 98,
+        "spam_messages": 167
+      }
+    }
+  ],
+  "load_avg_end": [
+    115.5185546875,
+    66.52685546875,
+    53.1982421875
+  ]
+}
+== prefix  11:28:08  load: { 105.19 66.62 53.46 }
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3960.98it/s]
+{
+  "phrasings": 240,
+  "prefix": [
+    {
+      "prefix": "'query: '",
+      "nn_p_at_1": 0.9333,
+      "cross_lingual_p_at_1": 0.975
+    },
+    {
+      "prefix": "'passage: '",
+      "nn_p_at_1": 0.8958,
+      "cross_lingual_p_at_1": 0.9917
+    },
+    {
+      "prefix": "''",
+      "nn_p_at_1": 0.9625,
+      "cross_lingual_p_at_1": 0.9708
+    }
+  ],
+  "cosine_query_prefix": {
+    "all_pairs": {
+      "p1": 0.761,
+      "p5": 0.777,
+      "p25": 0.803,
+      "p50": 0.822,
+      "p75": 0.843,
+      "p95": 0.879,
+      "p99": 0.915,
+      "min": 0.715,
+      "max": 0.977
+    },
+    "same_intent": {
+      "p1": 0.781,
+      "p5": 0.802,
+      "p25": 0.831,
+      "p50": 0.854,
+      "p75": 0.881,
+      "p95": 0.926,
+      "p99": 0.953,
+      "min": 0.732,
+      "max": 0.977
+    },
+    "different_intent": {
+      "p1": 0.76,
+      "p5": 0.776,
+      "p25": 0.801,
+      "p50": 0.819,
+      "p75": 0.838,
+      "p95": 0.866,
+      "p99": 0.887,
+      "min": 0.715,
+      "max": 0.954
+    },
+    "short_pairs_same_intent": {
+      "p1": 0.789,
+      "p5": 0.813,
+      "p25": 0.846,
+      "p50": 0.873,
+      "p75": 0.902,
+      "p95": 0.947,
+      "p99": 0.964,
+      "min": 0.776,
+      "max": 0.977
+    },
+    "short_pairs_different_intent": {
+      "p1": 0.766,
+      "p5": 0.779,
+      "p25": 0.801,
+      "p50": 0.819,
+      "p75": 0.84,
+      "p95": 0.871,
+      "p99": 0.888,
+      "min": 0.745,
+      "max": 0.917
+    },
+    "share_of_different_intent_pairs_above_0.80": 0.764,
+    "share_of_same_intent_pairs_below_0.85": 0.448
+  },
+  "histogram_query_prefix": {
+    "bins": [
+      "0.70-0.75",
+      "0.75-0.80",
+      "0.80-0.85",
+      "0.85-0.90",
+      "0.90-0.95",
+      "0.95-1.00"
+    ],
+    "same_intent": [
+      2,
+      152,
+      1405,
+      1441,
+      433,
+      47
+    ],
+    "different_intent": [
+      68,
+      5880,
+      15755,
+      3413,
+      83,
+      1
+    ],
+    "below_0.70_same": 0,
+    "below_0.70_different": 0
+  }
+}
+== assign  11:29:14  load: { 60.70 61.55 52.56 }
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights:   3%|▎         | 6/199 [00:00<00:03, 59.37it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 1102.10it/s]
+{
+  "cache_hit_keys": 574,
+  "cache_hit_rows": 13718,
+  "cache_hit_precision_rows": 0.9952,
+  "miss_keys": 1243,
+  "miss_rows": 6282,
+  "top1_percentiles": {
+    "p5": 0.873,
+    "p25": 0.903,
+    "p50": 0.938,
+    "p75": 0.971,
+    "p95": 0.991
+  },
+  "top1_novel_percentiles": {
+    "p5": 0.861,
+    "p25": 0.879,
+    "p50": 0.89,
+    "p75": 0.898,
+    "p95": 0.911
+  },
+  "margin_percentiles_correct": {
+    "p5": 0.007,
+    "p25": 0.034,
+    "p50": 0.065,
+    "p75": 0.085,
+    "p95": 0.108
+  },
+  "margin_percentiles_wrong": {
+    "p5": 0.001,
+    "p25": 0.004,
+    "p50": 0.01,
+    "p75": 0.02,
+    "p95": 0.033
+  },
+  "absolute": [
+    {
+      "tau": 0.8,
+      "assigned_rows": 6282,
+      "assigned_precision_rows": 0.4973,
+      "novel_rows_assigned": 1363,
+      "novel_rows_total": 1363,
+      "review_rows": 0,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 3124,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "tau": 0.85,
+      "assigned_rows": 6253,
+      "assigned_precision_rows": 0.4996,
+      "novel_rows_assigned": 1358,
+      "novel_rows_total": 1363,
+      "review_rows": 0,
+      "outlier_rows": 29,
+      "known_intent_rows_assigned_correctly": 3124,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "tau": 0.88,
+      "assigned_rows": 5908,
+      "assigned_precision_rows": 0.498,
+      "novel_rows_assigned": 1219,
+      "novel_rows_total": 1363,
+      "review_rows": 0,
+      "outlier_rows": 374,
+      "known_intent_rows_assigned_correctly": 2942,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "tau": 0.9,
+      "assigned_rows": 4424,
+      "assigned_precision_rows": 0.5784,
+      "novel_rows_assigned": 165,
+      "novel_rows_total": 1363,
+      "review_rows": 0,
+      "outlier_rows": 1858,
+      "known_intent_rows_assigned_correctly": 2559,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "tau": 0.92,
+      "assigned_rows": 2862,
+      "assigned_precision_rows": 0.6618,
+      "novel_rows_assigned": 0,
+      "novel_rows_total": 1363,
+      "review_rows": 0,
+      "outlier_rows": 3420,
+      "known_intent_rows_assigned_correctly": 1894,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "tau": 0.94,
+      "assigned_rows": 1982,
+      "assigned_precision_rows": 0.5419,
+      "novel_rows_assigned": 0,
+      "novel_rows_total": 1363,
+      "review_rows": 0,
+      "outlier_rows": 4300,
+      "known_intent_rows_assigned_correctly": 1074,
+      "known_intent_rows_total": 4837
+    }
+  ],
+  "margin": [
+    {
+      "floor": 0.8,
+      "m": 0.0,
+      "assigned_rows": 6282,
+      "assigned_precision_rows": 0.4973,
+      "novel_rows_assigned": 1363,
+      "novel_rows_total": 1363,
+      "review_rows": 0,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 3124,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "floor": 0.8,
+      "m": 0.01,
+      "assigned_rows": 4770,
+      "assigned_precision_rows": 0.6013,
+      "novel_rows_assigned": 498,
+      "novel_rows_total": 1363,
+      "review_rows": 1512,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 2868,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "floor": 0.8,
+      "m": 0.02,
+      "assigned_rows": 2994,
+      "assigned_precision_rows": 0.6336,
+      "novel_rows_assigned": 162,
+      "novel_rows_total": 1363,
+      "review_rows": 3288,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 1897,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "floor": 0.8,
+      "m": 0.03,
+      "assigned_rows": 1728,
+      "assigned_precision_rows": 0.952,
+      "novel_rows_assigned": 48,
+      "novel_rows_total": 1363,
+      "review_rows": 4554,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 1645,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "floor": 0.8,
+      "m": 0.04,
+      "assigned_rows": 1354,
+      "assigned_precision_rows": 0.9594,
+      "novel_rows_assigned": 46,
+      "novel_rows_total": 1363,
+      "review_rows": 4928,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 1299,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "floor": 0.8,
+      "m": 0.05,
+      "assigned_rows": 1210,
+      "assigned_precision_rows": 0.9562,
+      "novel_rows_assigned": 46,
+      "novel_rows_total": 1363,
+      "review_rows": 5072,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 1157,
+      "known_intent_rows_total": 4837
+    },
+    {
+      "floor": 0.8,
+      "m": 0.08,
+      "assigned_rows": 399,
+      "assigned_precision_rows": 1.0,
+      "novel_rows_assigned": 0,
+      "novel_rows_total": 1363,
+      "review_rows": 5883,
+      "outlier_rows": 0,
+      "known_intent_rows_assigned_correctly": 399,
+      "known_intent_rows_total": 4837
+    }
+  ]
+}
+== calls  11:30:24  load: { 42.83 55.97 51.16 }
+.venv/lib/python3.12/site-packages/umap/umap_.py:1952: UserWarning: n_jobs value 1 overridden to 1 by setting random_state. Use no seed for parallelism.
+  warn(
+.venv/lib/python3.12/site-packages/sklearn/cluster/_hdbscan/hdbscan.py:722: FutureWarning: The default value of `copy` will change from False to True in 1.10. Explicitly set a value for `copy` to silence this warning.
+  warn(
+{
+  "day1": {
+    "per_row": 20000,
+    "per_distinct_raw": 3018,
+    "per_distinct_l4": 1537,
+    "per_cluster_plus_taxonomy": 125
+  },
+  "day2": {
+    "per_row": 20000,
+    "per_cache_miss_l4_key": 1243,
+    "discovery_pool_keys": 515,
+    "discovery_clusters": 44,
+    "per_discovery_cluster": 44
+  },
+  "discovery": {
+    "policy": {
+      "floor": 0.8,
+      "m": 0.03
+    },
+    "clusters": {
+      "0": {
+        "spam_messages": 200,
+        "login_failure": 1
+      },
+      "1": {
+        "account_takeover": 91
+      },
+      "2": {
+        "change_address": 240,
+        "spam_messages": 15
+      },
+      "3": {
+        "cancel_subscription": 79,
+        "spam_messages": 23
+      },
+      "4": {
+        "change_address": 32
+      },
+      "5": {
+        "change_address": 37
+      },
+      "6": {
+        "refund_missing": 10,
+        "noise": 1
+      },
+      "7": {
+        "app_crash": 56
+      },
+      "8": {
+        "change_address": 10
+      },
+      "9": {
+        "login_failure": 22
+      },
+      "10": {
+        "refund_missing": 58,
+        "late_delivery": 42
+      },
+      "11": {
+        "refund_missing": 7
+      },
+      "12": {
+        "login_failure": 21
+      },
+      "13": {
+        "login_failure": 54
+      },
+      "14": {
+        "login_failure": 97
+      },
+      "15": {
+        "change_address": 184,
+        "app_crash": 18,
+        "spam_messages": 1,
+        "account_takeover": 1
+      },
+      "16": {
+        "change_address": 349
+      },
+      "17": {
+        "change_address": 6
+      },
+      "18": {
+        "refund_missing": 84
+      },
+      "19": {
+        "late_delivery": 103
+      },
+      "20": {
+        "refund_missing": 387
+      },
+      "21": {
+        "refund_missing": 7
+      },
+      "22": {
+        "change_address": 116
+      },
+      "23": {
+        "refund_missing": 21,
+        "double_charge": 18
+      },
+      "24": {
+        "refund_missing": 13,
+        "double_charge": 9
+      },
+      "25": {
+        "refund_missing": 42
+      },
+      "26": {
+        "double_charge": 29
+      },
+      "27": {
+        "late_delivery": 106,
+        "app_crash": 3,
+        "refund_missing": 1
+      },
+      "28": {
+        "login_failure": 176
+      },
+      "29": {
+        "login_failure": 9
+      },
+      "30": {
+        "change_address": 48
+      },
+      "31": {
+        "late_delivery": 154
+      },
+      "32": {
+        "late_delivery": 11
+      },
+      "33": {
+        "late_delivery": 8
+      },
+      "34": {
+        "late_delivery": 6
+      },
+      "35": {
+        "login_failure": 859
+      },
+      "36": {
+        "login_failure": 11
+      },
+      "37": {
+        "change_address": 21
+      },
+      "38": {
+        "change_address": 44
+      },
+      "39": {
+        "change_address": 45
+      },
+      "40": {
+        "late_delivery": 245
+      },
+      "41": {
+        "late_delivery": 9
+      },
+      "42": {
+        "change_address": 103,
+        "noise": 3
+      },
+      "43": {
+        "change_address": 63
+      }
+    },
+    "novel_majority_clusters": [
+      2,
+      4,
+      5,
+      8,
+      15,
+      16,
+      17,
+      22,
+      30,
+      37,
+      38,
+      39,
+      42,
+      43
+    ],
+    "novel_rows_in_pool": 1315,
+    "novel_rows_in_novel_majority_clusters": 1298,
+    "novel_majority_cluster_purity_rows": 0.9716,
+    "pool_noise_share_keys": 0.0738
+  }
+}

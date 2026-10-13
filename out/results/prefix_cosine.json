@@ -1,0 +1,133 @@
+{
+  "phrasings": 240,
+  "prefix": [
+    {
+      "prefix": "'query: '",
+      "nn_p_at_1": 0.9333,
+      "cross_lingual_p_at_1": 0.975
+    },
+    {
+      "prefix": "'passage: '",
+      "nn_p_at_1": 0.8958,
+      "cross_lingual_p_at_1": 0.9917
+    },
+    {
+      "prefix": "''",
+      "nn_p_at_1": 0.9625,
+      "cross_lingual_p_at_1": 0.9708
+    }
+  ],
+  "mixed_prefix": [
+    {
+      "index_prefix": "'query: '",
+      "probe_prefix": "'query: '",
+      "p_at_1": 0.9333,
+      "mean_cos_same_text_across_prefixes": 1.0
+    },
+    {
+      "index_prefix": "'query: '",
+      "probe_prefix": "''",
+      "p_at_1": 0.9458,
+      "mean_cos_same_text_across_prefixes": 0.9827
+    },
+    {
+      "index_prefix": "'query: '",
+      "probe_prefix": "'passage: '",
+      "p_at_1": 0.9208,
+      "mean_cos_same_text_across_prefixes": 0.943
+    },
+    {
+      "index_prefix": "''",
+      "probe_prefix": "'query: '",
+      "p_at_1": 0.9375,
+      "mean_cos_same_text_across_prefixes": 0.9827
+    }
+  ],
+  "cosine_query_prefix": {
+    "all_pairs": {
+      "p1": 0.761,
+      "p5": 0.777,
+      "p25": 0.803,
+      "p50": 0.822,
+      "p75": 0.843,
+      "p95": 0.879,
+      "p99": 0.915,
+      "min": 0.715,
+      "max": 0.977
+    },
+    "same_intent": {
+      "p1": 0.781,
+      "p5": 0.802,
+      "p25": 0.831,
+      "p50": 0.854,
+      "p75": 0.881,
+      "p95": 0.926,
+      "p99": 0.953,
+      "min": 0.732,
+      "max": 0.977
+    },
+    "different_intent": {
+      "p1": 0.76,
+      "p5": 0.776,
+      "p25": 0.801,
+      "p50": 0.819,
+      "p75": 0.838,
+      "p95": 0.866,
+      "p99": 0.887,
+      "min": 0.715,
+      "max": 0.954
+    },
+    "short_pairs_same_intent": {
+      "p1": 0.789,
+      "p5": 0.813,
+      "p25": 0.846,
+      "p50": 0.873,
+      "p75": 0.902,
+      "p95": 0.947,
+      "p99": 0.964,
+      "min": 0.776,
+      "max": 0.977
+    },
+    "short_pairs_different_intent": {
+      "p1": 0.766,
+      "p5": 0.779,
+      "p25": 0.801,
+      "p50": 0.819,
+      "p75": 0.84,
+      "p95": 0.871,
+      "p99": 0.888,
+      "min": 0.745,
+      "max": 0.917
+    },
+    "share_of_different_intent_pairs_above_0.80": 0.764,
+    "share_of_same_intent_pairs_below_0.85": 0.448
+  },
+  "histogram_query_prefix": {
+    "bins": [
+      "0.70-0.75",
+      "0.75-0.80",
+      "0.80-0.85",
+      "0.85-0.90",
+      "0.90-0.95",
+      "0.95-1.00"
+    ],
+    "same_intent": [
+      2,
+      152,
+      1405,
+      1441,
+      433,
+      47
+    ],
+    "different_intent": [
+      68,
+      5880,
+      15755,
+      3413,
+      83,
+      1
+    ],
+    "below_0.70_same": 0,
+    "below_0.70_different": 0
+  }
+}

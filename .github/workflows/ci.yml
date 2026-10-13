@@ -1,0 +1,34 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+      - name: Lint (pyflakes + syntax)
+        run: pipx run ruff check .
+      - name: Shellcheck
+        run: shellcheck run_all.sh
+      - name: Every module compiles
+        run: python -m py_compile triage/*.py scripts/*.py
+      # The corpus and the dedupe step are seeded and stdlib-only, so CI reruns
+      # them and requires section 1 of MEASUREMENTS.md to reproduce exactly.
+      # The model steps (torch + a ~470 MB download, minutes of CPU,
+      # hardware-specific timings) are run locally with ./run_all.sh.
+      - name: Regenerate the seeded corpus
+        run: python -m triage.corpus
+      - name: Rerun the dedupe measurements
+        run: python -m triage.dedupe > /dev/null
+      - name: Section 1 of MEASUREMENTS.md must reproduce exactly
+        run: python scripts/check_reproduces.py

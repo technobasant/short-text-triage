@@ -1,0 +1,66 @@
+{
+  "machine": {
+    "chip": "Apple M5",
+    "cpus": 10,
+    "torch_threads": 4,
+    "python": "3.12.14",
+    "torch": "2.14.0",
+    "sentence_transformers": "6.1.0",
+    "scikit_learn": "1.9.1",
+    "umap_learn": "0.5.12",
+    "numpy": "2.5.3",
+    "model": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "load_avg_1_5_15": [
+      43.5,
+      47.6,
+      50.0
+    ]
+  },
+  "runs": 3,
+  "results": [
+    {
+      "input": "day-1 distinct L4 keys",
+      "n": 1537,
+      "batch_size": 64,
+      "median_wall_s": 28.53,
+      "wall_runs_s": [
+        40.96,
+        28.53,
+        28.32
+      ],
+      "median_cpu_s": 6.74,
+      "cpu_runs_s": [
+        8.45,
+        6.74,
+        6.74
+      ],
+      "texts_per_wall_s": 54,
+      "cpu_ms_per_1k_texts": 4384
+    },
+    {
+      "input": "day-1 rows",
+      "n": 20000,
+      "batch_size": 64,
+      "median_wall_s": 387.18,
+      "wall_runs_s": [
+        346.09,
+        387.18,
+        431.29
+      ],
+      "median_cpu_s": 93.31,
+      "cpu_runs_s": [
+        89.79,
+        93.31,
+        95.09
+      ],
+      "texts_per_wall_s": 52,
+      "cpu_ms_per_1k_texts": 4666
+    }
+  ],
+  "load_avg_end": [
+    36.9,
+    44.8,
+    46.9
+  ]
+}

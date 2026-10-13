@@ -1,0 +1,125 @@
+{
+  "hdbscan": {
+    "min_cluster_size": 5,
+    "min_samples": 3
+  },
+  "umap": {
+    "n_neighbors": 15,
+    "n_components": 10,
+    "min_dist": 0.0,
+    "metric": "cosine",
+    "random_state": 42
+  },
+  "load_avg_start": [
+    40.80322265625,
+    43.01904296875,
+    45.77734375
+  ],
+  "runs": 3,
+  "results": [
+    {
+      "method": "(a) HDBSCAN, 384-d, distinct keys",
+      "points": 1537,
+      "median_wall_s": 4.09,
+      "wall_runs_s": [
+        4.09,
+        2.61,
+        6.22
+      ],
+      "median_cpu_s": 1.22,
+      "cpu_runs_s": [
+        1.17,
+        1.22,
+        1.28
+      ],
+      "clusters": 97,
+      "noise_row_share": 0.0487,
+      "purity_rows": 0.9956,
+      "ari_clustered_rows": 0.5737,
+      "ari_all_rows_noise_as_one_bucket": 0.537,
+      "multilingual_cluster_share": 0.1959,
+      "clusters_per_intent": {
+        "account_takeover": 12,
+        "app_crash": 12,
+        "cancel_subscription": 11,
+        "double_charge": 15,
+        "late_delivery": 13,
+        "login_failure": 14,
+        "noise": 1,
+        "refund_missing": 9,
+        "spam_messages": 10
+      }
+    },
+    {
+      "method": "(b) UMAP->HDBSCAN, distinct keys",
+      "points": 1537,
+      "median_wall_s": 11.72,
+      "wall_runs_s": [
+        44.82,
+        9.38,
+        11.72
+      ],
+      "median_cpu_s": 3.3,
+      "cpu_runs_s": [
+        15.66,
+        3.26,
+        3.3
+      ],
+      "clusters": 124,
+      "noise_row_share": 0.0212,
+      "purity_rows": 0.9945,
+      "ari_clustered_rows": 0.4871,
+      "ari_all_rows_noise_as_one_bucket": 0.4784,
+      "multilingual_cluster_share": 0.2581,
+      "clusters_per_intent": {
+        "account_takeover": 17,
+        "app_crash": 18,
+        "cancel_subscription": 14,
+        "double_charge": 19,
+        "late_delivery": 13,
+        "login_failure": 21,
+        "noise": 1,
+        "refund_missing": 9,
+        "spam_messages": 12
+      }
+    },
+    {
+      "method": "(c) UMAP->HDBSCAN, every row",
+      "points": 20000,
+      "median_wall_s": 113.1,
+      "wall_runs_s": [
+        127.43,
+        83.61,
+        113.1
+      ],
+      "median_cpu_s": 35.44,
+      "cpu_runs_s": [
+        46.73,
+        33.88,
+        35.44
+      ],
+      "clusters": 1254,
+      "noise_row_share": 0.1191,
+      "purity_rows": 0.9998,
+      "ari_clustered_rows": 0.0113,
+      "ari_all_rows_noise_as_one_bucket": 0.0071,
+      "multilingual_cluster_share": 0.0104,
+      "clusters_per_intent": {
+        "account_takeover": 136,
+        "app_crash": 87,
+        "cancel_subscription": 80,
+        "double_charge": 354,
+        "late_delivery": 84,
+        "login_failure": 219,
+        "noise": 29,
+        "refund_missing": 98,
+        "spam_messages": 167
+      }
+    }
+  ],
+  "load_avg_end": [
+    115.5185546875,
+    66.52685546875,
+    53.1982421875
+  ]
+}
