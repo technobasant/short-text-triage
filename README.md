@@ -4,13 +4,13 @@
 
 Short free text — support reports, reviews, a comment field nobody designed — arrives as rows, and the obvious pipeline sends each row to a model. That pays for the same meaning thousands of times, labels it inconsistently, and, once you switch to embeddings to save money, files anything new under the nearest category it already knows with a score that looks confident.
 
-This lab tests the alternative on a synthetic multilingual corpus. **Normalize to a key, embed each distinct key once, cluster the keys, and label the clusters. Then assign a new string only when its best label beats the runner-up by a margin.** Strings that fail the margin go to a review pool that is itself clustered. A model never sees a row.
+This lab tests the alternative on a generated multilingual corpus. **Normalize to a key, embed each distinct key once, cluster the keys, and label the clusters. Then assign a new string only when its best label beats the runner-up by a margin.** Strings that fail the margin go to a review pool that is itself clustered. A model never sees a row.
 
 Write-up: [Label the string, not the row: a short-text triage lab](https://basantbhattarai.com.np/writing/classify-distinct-strings-not-rows/)
 
 ## What is in the corpus
 
-Everything is **synthetic and seeded**; no real user text is used anywhere. [`triage/phrases.py`](triage/phrases.py) holds 240 hand-written base phrasings — 8 support-inbox intents × 5 languages (en, es, de, fr, pt) × 6 wordings — plus a ninth intent that only appears on day 2. [`triage/corpus.py`](triage/corpus.py) damages them the way free-text fields get damaged (case, stray and non-breaking spaces, trailing punctuation, NFD-decomposed accents, single-character typos) and samples them Zipf-style into two 20,000-row days.
+Everything is **generated and reproducible**; no real user text is used anywhere. [`triage/phrases.py`](triage/phrases.py) holds 240 hand-written base phrasings — 8 support-inbox intents × 5 languages (en, es, de, fr, pt) × 6 wordings — plus a ninth intent that only appears on day 2. [`triage/corpus.py`](triage/corpus.py) damages them the way free-text fields get damaged (case, stray and non-breaking spaces, trailing punctuation, NFD-decomposed accents, single-character typos) and samples them Zipf-style into two 20,000-row days.
 
 Day 2 is the test: 14,086 rows of known wordings with new damage, 3,937 rows of wordings held back from day 1, 1,363 rows of an intent that has no cluster at all, and 614 rows of noise.
 
@@ -74,7 +74,7 @@ Each step is also a module (`uv run python -m triage.<step>`), and later steps r
 
 ## Limits
 
-- **Synthetic corpus.** Hand-written phrasings and mechanical damage are cleaner than real inboxes; what transfers is the mechanism (normalization collapses variants, the cosine band is narrow, a margin beats a threshold), not the exact percentages.
+- **Generated corpus.** Hand-written phrasings and mechanical damage are cleaner than real inboxes; what transfers is the mechanism (normalization collapses variants, the cosine band is narrow, a margin beats a threshold), not the exact percentages.
 - **One model, one machine.** multilingual-e5-small on CPU on one shared machine (Apple M5), under load. Larger or domain-tuned embedders will move the band.
 - **Small n where it matters.** The threshold story turns on one heavy key; the lab reports that rather than averaging it away.
 - **Built from scratch.** The question comes from [the consulting engagement](https://basantbhattarai.com.np/work/consulting-short-text-and-alerting/) this lab rebuilds the idea of; no data, code or domain from it is used here.

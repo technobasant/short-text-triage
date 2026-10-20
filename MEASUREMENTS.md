@@ -2,7 +2,7 @@
 
 Every figure the article cites, with the method behind it. Raw outputs are in
 `out/results/*.json`; regenerate with `./run_all.sh`. **The corpus is
-synthetic** (`triage/phrases.py`, `triage/corpus.py`); no real user text was
+generated** (`triage/phrases.py`, `triage/corpus.py`); no real user text was
 used anywhere.
 
 ## Apparatus
